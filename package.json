@@ -1,0 +1,31 @@
+{
+  "name": "tree-sitter-man",
+  "version": "1.0.0",
+  "description": "Best-effort Tree-sitter parser for Unix man pages",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ribru17/tree-sitter-man.git"
+  },
+  "keywords": [
+    "parser",
+    "lexer",
+    "man",
+    "man-pages"
+  ],
+  "author": "Riley Bruins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ribru17/tree-sitter-man/issues"
+  },
+  "homepage": "https://github.com/ribru17/tree-sitter-man#readme",
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.21.0"
+  }
+}

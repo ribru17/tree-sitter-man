@@ -1,0 +1,64 @@
+[
+  {
+    "type": "header",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "manual",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "footer",
+          "named": true
+        },
+        {
+          "type": "header",
+          "named": true
+        },
+        {
+          "type": "option",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "section_heading",
+          "named": true
+        },
+        {
+          "type": "subsection_heading",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section_heading",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "subsection_heading",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "footer",
+    "named": true
+  },
+  {
+    "type": "option",
+    "named": true
+  },
+  {
+    "type": "reference",
+    "named": true
+  }
+]

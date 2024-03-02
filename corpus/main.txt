@@ -1,0 +1,121 @@
+================================================================================
+basic man page
+================================================================================
+GREP(1)                          User Commands                         GREP(1)
+
+NAME
+       grep - print lines that match patterns
+
+SYNOPSIS
+       grep [OPTION...] PATTERNS [FILE...]
+       grep [OPTION...] -e PATTERNS ... [FILE...]
+       grep [OPTION...] -f PATTERN_FILE ... [FILE...]
+
+OPTIONS
+   Generic Program Information
+       --help Output a usage message and exit.
+
+       -V, --version
+              Output the version number of grep and exit.
+
+       -c <name>=<value>
+           Pass a configuration parameter to the command. The value given will
+           override values from configuration files. The <name> is expected in
+
+       --config-env=<name>=<envvar>
+           Like -c <name>=<value>, give configuration variable <name> a value,
+           where <envvar> is the name of an environment variable from which to
+           retrieve the value. Unlike -c there is no shortcut for directly
+
+       --help A thing
+
+GNU grep 3.11                     2019-12-29                           GREP(1)
+
+--------------------------------------------------------------------------------
+
+(manual
+  (header)
+  (section_heading)
+  (section_heading)
+  (section_heading)
+  (subsection_heading)
+  (option)
+  (option)
+  (option)
+  (option)
+  (option)
+  (footer))
+
+================================================================================
+more complex man page
+================================================================================
+GREP(1)                          User Commands                         GREP(1)
+
+NAME
+       grep - print lines that match patterns
+
+
+ENVIRONMENT
+       The   behavior  of  grep  is  affected  by  the  following  environment
+       variables.
+
+       The locale for category LC_foo is  specified  by  examining  the  three
+       environment  variables  LC_ALL, LC_foo, LANG, in that order.  The first
+       of these variables that is set specifies the locale.  For  example,  if
+       LC_ALL  is not set, but LC_MESSAGES is set to pt_BR, then the Brazilian
+       Portuguese locale is used for the LC_MESSAGES category.  The  C  locale
+       is  used  if none of these environment variables are set, if the locale
+       catalog is not installed, or if grep was  not  compiled  with  national
+       language support (NLS).  The shell command locale -a lists locales that
+       are currently available.
+
+       GREP_COLORS
+              Controls how the --color option highlights output.  Its value is
+              a   colon-separated   list  of  capabilities  that  defaults  to
+              ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36  with  the  rv
+              and  ne  boolean  capabilities omitted (i.e., false).  Supported
+              capabilities are as follows.
+
+              sl=    SGR substring for whole selected  lines  (i.e.,  matching
+                     lines when the -v command-line option is omitted, or non-
+                     matching  lines  when  -v  is specified).  If however the
+                     boolean rv capability and the -v command-line option  are
+                     both  specified,  it  applies  to  context matching lines
+                     instead.  The default  is  empty  (i.e.,  the  terminal's
+                     default color pair).
+
+DESCRIPTION
+       Git is a fast, scalable, distributed revision control system with an
+       unusually rich command set that provides both high-level operations and
+       full access to internals.
+
+       See gittutorial(7) to get started, then see giteveryday(7) for a useful
+       minimum set of commands. The Git User’s Manual[1] has a more in-depth
+       introduction.
+
+SEE ALSO
+   Regular Manual Pages
+       awk(1), cmp(1), diff(1), read(2), pcre2(3), terminfo(5), glob(7),
+       regex(7)
+
+GNU grep 3.11                     2019-12-29                           GREP(1)
+------------------------------------------------------------
+
+(manual
+  (header)
+  (section_heading)
+  (section_heading)
+  (section_heading)
+  (reference)
+  (reference)
+  (section_heading)
+  (subsection_heading)
+  (reference)
+  (reference)
+  (reference)
+  (reference)
+  (reference)
+  (reference)
+  (reference)
+  (reference)
+  (footer))
