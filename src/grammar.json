@@ -46,7 +46,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_content"
+            "name": "block"
           },
           {
             "type": "SEQ",
@@ -72,6 +72,35 @@
           {
             "type": "PATTERN",
             "value": "\\r?\\n"
+          }
+        ]
+      }
+    },
+    "block": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_content"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_content"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "\\r?\\n"
+                }
+              ]
+            }
           }
         ]
       }

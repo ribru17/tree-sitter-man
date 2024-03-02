@@ -22,11 +22,14 @@ module.exports = grammar({
           $.section_heading,
           $.subsection_heading,
           $.footer,
-          $._content,
+          $.block,
           seq($.option, optional(ANYTHING)),
           NEWLINE,
         ),
       ),
+
+    block: ($) =>
+      prec.right(seq($._content, repeat(choice($._content, NEWLINE)))),
 
     _content: ($) =>
       seq(
@@ -44,6 +47,7 @@ module.exports = grammar({
 
     subsection_heading: ($) => seq(/ {3}/, LINE_CONTENT),
 
+    // TODO: Handle when a reference is hyphenated, as seen in `man 2 wait`
     reference: ($) => /[a-zA-Z0-9_]+\(\d+\)/,
 
     // extremely simple heuristic to highlight most option instances

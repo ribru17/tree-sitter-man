@@ -1,5 +1,20 @@
 [
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "header",
     "named": true,
     "fields": {}
@@ -13,6 +28,10 @@
       "required": true,
       "types": [
         {
+          "type": "block",
+          "named": true
+        },
+        {
           "type": "footer",
           "named": true
         },
@@ -22,10 +41,6 @@
         },
         {
           "type": "option",
-          "named": true
-        },
-        {
-          "type": "reference",
           "named": true
         },
         {

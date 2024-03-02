@@ -36,13 +36,18 @@ GNU grep 3.11                     2019-12-29                           GREP(1)
 (manual
   (header)
   (section_heading)
+  (block)
   (section_heading)
+  (block)
   (section_heading)
   (subsection_heading)
   (option)
   (option)
+  (block)
   (option)
+  (block)
   (option)
+  (block)
   (option)
   (footer))
 
@@ -104,18 +109,137 @@ GNU grep 3.11                     2019-12-29                           GREP(1)
 (manual
   (header)
   (section_heading)
+  (block)
   (section_heading)
+  (block)
   (section_heading)
-  (reference)
-  (reference)
+  (block
+    (reference)
+    (reference))
   (section_heading)
   (subsection_heading)
-  (reference)
-  (reference)
-  (reference)
-  (reference)
-  (reference)
-  (reference)
-  (reference)
-  (reference)
+  (block
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference))
+  (footer))
+
+================================================================================
+man page with program examples
+================================================================================
+wait(2)                       System Calls Manual                      wait(2)
+
+NAME
+       wait, waitpid, waitid - wait for process to change state
+
+SYNOPSIS
+       #include <sys/wait.h>
+
+       pid_t wait(int *_Nullable wstatus);
+       pid_t waitpid(pid_t pid, int *_Nullable wstatus, int options);
+
+       int waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options);
+                       /* This is the glibc and POSIX interface; see
+                          NOTES for information on the raw system call. */
+
+   Feature Test Macro Requirements for glibc (see feature_test_macros(7)):
+
+       waitid():
+           Since glibc 2.26:
+               _XOPEN_SOURCE >= 500 || _POSIX_C_SOURCE >= 200809L
+           glibc 2.25 and earlier:
+               _XOPEN_SOURCE
+                   || /* Since glibc 2.12: */ _POSIX_C_SOURCE >= 200809L
+                   || /* glibc <= 2.19: */ _BSD_SOURCE
+
+EXAMPLES
+       The  following  program  demonstrates the use of fork(2) and waitpid().
+
+   Program source
+
+       #include <stdint.h>
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <sys/wait.h>
+       #include <unistd.h>
+
+       int
+       main(int argc, char *argv[])
+       {
+           int    wstatus;
+           pid_t  cpid, w;
+
+           cpid = fork();
+           if (cpid == -1) {
+               perror("fork");
+               exit(EXIT_FAILURE);
+           }
+
+           if (cpid == 0) {            /* Code executed by child */
+               printf("Child PID is %jd\n", (intmax_t) getpid());
+               if (argc == 1)
+                   pause();                    /* Wait for signals */
+               _exit(atoi(argv[1]));
+
+           } else {                    /* Code executed by parent */
+               do {
+                   w = waitpid(cpid, &wstatus, WUNTRACED | WCONTINUED);
+                   if (w == -1) {
+                       perror("waitpid");
+                       exit(EXIT_FAILURE);
+                   }
+
+                   if (WIFEXITED(wstatus)) {
+                       printf("exited, status=%d\n", WEXITSTATUS(wstatus));
+                   } else if (WIFSIGNALED(wstatus)) {
+                       printf("killed by signal %d\n", WTERMSIG(wstatus));
+                   } else if (WIFSTOPPED(wstatus)) {
+                       printf("stopped by signal %d\n", WSTOPSIG(wstatus));
+                   } else if (WIFCONTINUED(wstatus)) {
+                       printf("continued\n");
+                   }
+               } while (!WIFEXITED(wstatus) && !WIFSIGNALED(wstatus));
+               exit(EXIT_SUCCESS);
+           }
+       }
+
+SEE ALSO
+       _exit(2), clone(2), fork(2),  kill(2),  ptrace(2),  sigaction(2),  sig‐
+       nal(2), wait4(2), pthread_create(3), core(5), credentials(7), signal(7)
+
+Linux man-pages 6.06              2023-10-31                           wait(2)
+------------------------------------------------------------
+
+(manual
+  (header)
+  (section_heading)
+  (block)
+  (section_heading)
+  (block)
+  (subsection_heading)
+  (block)
+  (section_heading)
+  (block
+    (reference))
+  (subsection_heading)
+  (block)
+  (section_heading)
+  (block
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference)
+    (reference))
   (footer))
