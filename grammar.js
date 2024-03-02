@@ -12,18 +12,13 @@ module.exports = grammar({
   externals: ($) => [$.footer],
 
   rules: {
-    manual: ($) => seq($.header, $._body),
-
-    header: ($) => seq(ANYTHING, NEWLINE),
+    manual: ($) => seq(alias(ANYTHING, $.title), NEWLINE, $._body),
 
     _body: ($) =>
       repeat1(
         choice(
           $.section_heading,
-          $.subsection_heading,
           $.footer,
-          $.block,
-          seq($.option, optional(ANYTHING)),
           NEWLINE,
         ),
       ),
@@ -43,15 +38,31 @@ module.exports = grammar({
         NEWLINE,
       ),
 
-    section_heading: ($) => LINE_CONTENT,
+    section_heading: ($) =>
+      seq(LINE_CONTENT, repeat(choice($.block, $.subsection_heading))),
 
-    subsection_heading: ($) => seq(/ {3}/, LINE_CONTENT),
+    subsection_heading: ($) =>
+      prec.right(
+        seq(
+          / {3}/,
+          LINE_CONTENT,
+          repeat(choice($.block, $.option_section, NEWLINE)),
+        ),
+      ),
 
     // TODO: Handle when a reference is hyphenated, as seen in `man 2 wait`
     reference: ($) => /[a-zA-Z0-9_]+\(\d+\)/,
 
-    // extremely simple heuristic to highlight most option instances
-    option: ($) =>
-      / {7}([-+]\S+( +[A-Z]+| +<\S+>)?, +)*[-+]\S+( +[A-Z]+\s*\r?\n| +<\S+>\s*\r?\n)?/,
+    // extremely simple heuristic to highlight most option sections
+    option_section: ($) =>
+      prec.right(seq(
+        alias(
+          / {7}([-+]\S+( +[A-Z]+| +<\S+>)?, +)*[-+]\S+( +[A-Z]+\s*\r?\n| +<\S+>\s*\r?\n)?/,
+          $.option,
+        ),
+        optional(ANYTHING),
+        NEWLINE,
+        optional($.block),
+      )),
   },
 });

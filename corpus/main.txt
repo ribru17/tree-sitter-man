@@ -34,21 +34,26 @@ GNU grep 3.11                     2019-12-29                           GREP(1)
 --------------------------------------------------------------------------------
 
 (manual
-  (header)
-  (section_heading)
-  (block)
-  (section_heading)
-  (block)
-  (section_heading)
-  (subsection_heading)
-  (option)
-  (option)
-  (block)
-  (option)
-  (block)
-  (option)
-  (block)
-  (option)
+  (title)
+  (section_heading
+    (block))
+  (section_heading
+    (block))
+  (section_heading
+    (subsection_heading
+      (option_section
+        (option))
+      (option_section
+        (option)
+        (block))
+      (option_section
+        (option)
+        (block))
+      (option_section
+        (option)
+        (block))
+      (option_section
+        (option))))
   (footer))
 
 ================================================================================
@@ -107,26 +112,26 @@ GNU grep 3.11                     2019-12-29                           GREP(1)
 ------------------------------------------------------------
 
 (manual
-  (header)
-  (section_heading)
-  (block)
-  (section_heading)
-  (block)
-  (section_heading)
-  (block
-    (reference)
-    (reference))
-  (section_heading)
-  (subsection_heading)
-  (block
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference))
+  (title)
+  (section_heading
+    (block))
+  (section_heading
+    (block))
+  (section_heading
+    (block
+      (reference)
+      (reference)))
+  (section_heading
+    (subsection_heading
+      (block
+        (reference)
+        (reference)
+        (reference)
+        (reference)
+        (reference)
+        (reference)
+        (reference)
+        (reference))))
   (footer))
 
 ================================================================================
@@ -216,30 +221,30 @@ Linux man-pages 6.06              2023-10-31                           wait(2)
 ------------------------------------------------------------
 
 (manual
-  (header)
-  (section_heading)
-  (block)
-  (section_heading)
-  (block)
-  (subsection_heading)
-  (block)
-  (section_heading)
-  (block
-    (reference))
-  (subsection_heading)
-  (block)
-  (section_heading)
-  (block
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference)
-    (reference))
+  (title)
+  (section_heading
+    (block))
+  (section_heading
+    (block)
+    (subsection_heading
+      (block)))
+  (section_heading
+    (block
+      (reference))
+    (subsection_heading
+      (block)))
+  (section_heading
+    (block
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)
+      (reference)))
   (footer))

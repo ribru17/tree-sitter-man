@@ -5,25 +5,21 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "header"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_body"
-        }
-      ]
-    },
-    "header": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^\\r\\n]+"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\r\\n]+"
+          },
+          "named": true,
+          "value": "title"
         },
         {
           "type": "PATTERN",
           "value": "\\r?\\n"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_body"
         }
       ]
     },
@@ -38,36 +34,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "subsection_heading"
-          },
-          {
-            "type": "SYMBOL",
             "name": "footer"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "block"
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "option"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "PATTERN",
-                    "value": "[^\\r\\n]+"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
           },
           {
             "type": "PATTERN",
@@ -166,29 +133,116 @@
       ]
     },
     "section_heading": {
-      "type": "PATTERN",
-      "value": "\\S[^\\r\\n]*\\r?\\n"
-    },
-    "subsection_heading": {
       "type": "SEQ",
       "members": [
         {
           "type": "PATTERN",
-          "value": " {3}"
+          "value": "\\S[^\\r\\n]*\\r?\\n"
         },
         {
-          "type": "PATTERN",
-          "value": "\\S[^\\r\\n]*\\r?\\n"
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "block"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "subsection_heading"
+              }
+            ]
+          }
         }
       ]
+    },
+    "subsection_heading": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": " {3}"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\S[^\\r\\n]*\\r?\\n"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "block"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "option_section"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "\\r?\\n"
+                }
+              ]
+            }
+          }
+        ]
+      }
     },
     "reference": {
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_]+\\(\\d+\\)"
     },
-    "option": {
-      "type": "PATTERN",
-      "value": " {7}([-+]\\S+( +[A-Z]+| +<\\S+>)?, +)*[-+]\\S+( +[A-Z]+\\s*\\r?\\n| +<\\S+>\\s*\\r?\\n)?"
+    "option_section": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "PATTERN",
+              "value": " {7}([-+]\\S+( +[A-Z]+| +<\\S+>)?, +)*[-+]\\S+( +[A-Z]+\\s*\\r?\\n| +<\\S+>\\s*\\r?\\n)?"
+            },
+            "named": true,
+            "value": "option"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\\r\\n]+"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\r?\\n"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "block"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "extras": [],
