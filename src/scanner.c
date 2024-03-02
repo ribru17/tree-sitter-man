@@ -26,6 +26,7 @@ bool tree_sitter_man_external_scanner_scan(void *payload, TSLexer *lexer,
         if (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
             lexer->mark_end(lexer);
             lexer->advance(lexer, false);
+            lexer->advance(lexer, false);
             // allow empty line after footer
             if (lexer->eof(lexer)) {
                 return true;
