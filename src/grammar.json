@@ -136,8 +136,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\S[^\\r\\n]*\\r?\\n"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\S[^\\r\\n]*\\r?\\n"
+          },
+          "named": true,
+          "value": "section_title"
         },
         {
           "type": "REPEAT",
@@ -168,8 +173,13 @@
             "value": " {3}"
           },
           {
-            "type": "PATTERN",
-            "value": "\\S[^\\r\\n]*\\r?\\n"
+            "type": "ALIAS",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\S[^\\r\\n]*\\r?\\n"
+            },
+            "named": true,
+            "value": "subsection_title"
           },
           {
             "type": "REPEAT",

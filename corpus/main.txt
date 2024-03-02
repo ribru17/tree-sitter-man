@@ -36,11 +36,15 @@ GNU grep 3.11                     2019-12-29                           GREP(1)
 (manual
   (title)
   (section_heading
+    (section_title)
     (block))
   (section_heading
+    (section_title)
     (block))
   (section_heading
+    (section_title)
     (subsection_heading
+      (subsection_title)
       (option_section
         (option))
       (option_section
@@ -114,15 +118,20 @@ GNU grep 3.11                     2019-12-29                           GREP(1)
 (manual
   (title)
   (section_heading
+    (section_title)
     (block))
   (section_heading
+    (section_title)
     (block))
   (section_heading
+    (section_title)
     (block
       (reference)
       (reference)))
   (section_heading
+    (section_title)
     (subsection_heading
+      (subsection_title)
       (block
         (reference)
         (reference)
@@ -223,17 +232,23 @@ Linux man-pages 6.06              2023-10-31                           wait(2)
 (manual
   (title)
   (section_heading
+    (section_title)
     (block))
   (section_heading
+    (section_title)
     (block)
     (subsection_heading
+      (subsection_title)
       (block)))
   (section_heading
+    (section_title)
     (block
       (reference))
     (subsection_heading
+      (subsection_title)
       (block)))
   (section_heading
+    (section_title)
     (block
       (reference)
       (reference)

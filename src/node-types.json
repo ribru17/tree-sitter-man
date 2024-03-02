@@ -62,10 +62,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "section_title",
           "named": true
         },
         {
@@ -81,7 +85,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block",
@@ -89,6 +93,10 @@
         },
         {
           "type": "option_section",
+          "named": true
+        },
+        {
+          "type": "subsection_title",
           "named": true
         }
       ]
@@ -104,6 +112,14 @@
   },
   {
     "type": "reference",
+    "named": true
+  },
+  {
+    "type": "section_title",
+    "named": true
+  },
+  {
+    "type": "subsection_title",
     "named": true
   },
   {

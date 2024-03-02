@@ -39,13 +39,16 @@ module.exports = grammar({
       ),
 
     section_heading: ($) =>
-      seq(LINE_CONTENT, repeat(choice($.block, $.subsection_heading))),
+      seq(
+        alias(LINE_CONTENT, $.section_title),
+        repeat(choice($.block, $.subsection_heading)),
+      ),
 
     subsection_heading: ($) =>
       prec.right(
         seq(
           / {3}/,
-          LINE_CONTENT,
+          alias(LINE_CONTENT, $.subsection_title),
           repeat(choice($.block, $.option_section, NEWLINE)),
         ),
       ),

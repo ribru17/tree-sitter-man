@@ -9,12 +9,12 @@
 #define STATE_COUNT 37
 #define LARGE_STATE_COUNT 2
 #define SYMBOL_COUNT 22
-#define ALIAS_COUNT 1
+#define ALIAS_COUNT 2
 #define TOKEN_COUNT 11
 #define EXTERNAL_TOKEN_COUNT 1
 #define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
-#define PRODUCTION_ID_COUNT 2
+#define PRODUCTION_ID_COUNT 3
 
 enum ts_symbol_identifiers {
   aux_sym_manual_token1 = 1,
@@ -38,7 +38,8 @@ enum ts_symbol_identifiers {
   aux_sym__content_repeat1 = 19,
   aux_sym_section_heading_repeat1 = 20,
   aux_sym_subsection_heading_repeat1 = 21,
-  alias_sym_title = 22,
+  alias_sym_subsection_title = 22,
+  alias_sym_title = 23,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -48,7 +49,7 @@ static const char * const ts_symbol_names[] = {
   [aux_sym__content_token1] = "_content_token1",
   [aux_sym__content_token2] = "_content_token2",
   [aux_sym__content_token3] = "_content_token3",
-  [aux_sym_section_heading_token1] = "section_heading_token1",
+  [aux_sym_section_heading_token1] = "section_title",
   [aux_sym_subsection_heading_token1] = "subsection_heading_token1",
   [sym_reference] = "reference",
   [aux_sym_option_section_token1] = "option",
@@ -64,6 +65,7 @@ static const char * const ts_symbol_names[] = {
   [aux_sym__content_repeat1] = "_content_repeat1",
   [aux_sym_section_heading_repeat1] = "section_heading_repeat1",
   [aux_sym_subsection_heading_repeat1] = "subsection_heading_repeat1",
+  [alias_sym_subsection_title] = "subsection_title",
   [alias_sym_title] = "title",
 };
 
@@ -90,6 +92,7 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym__content_repeat1] = aux_sym__content_repeat1,
   [aux_sym_section_heading_repeat1] = aux_sym_section_heading_repeat1,
   [aux_sym_subsection_heading_repeat1] = aux_sym_subsection_heading_repeat1,
+  [alias_sym_subsection_title] = alias_sym_subsection_title,
   [alias_sym_title] = alias_sym_title,
 };
 
@@ -119,8 +122,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [aux_sym_section_heading_token1] = {
-    .visible = false,
-    .named = false,
+    .visible = true,
+    .named = true,
   },
   [aux_sym_subsection_heading_token1] = {
     .visible = false,
@@ -182,6 +185,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
+  [alias_sym_subsection_title] = {
+    .visible = true,
+    .named = true,
+  },
   [alias_sym_title] = {
     .visible = true,
     .named = true,
@@ -192,6 +199,9 @@ static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE
   [0] = {0},
   [1] = {
     [0] = alias_sym_title,
+  },
+  [2] = {
+    [1] = alias_sym_subsection_title,
   },
 };
 
@@ -1033,19 +1043,19 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [0] = {.entry = {.count = 0, .reusable = false}},
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
   [3] = {.entry = {.count = 1, .reusable = true}}, SHIFT(33),
-  [5] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subsection_heading, 3),
+  [5] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subsection_heading, 3, .production_id = 2),
   [7] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
   [9] = {.entry = {.count = 1, .reusable = false}}, SHIFT(32),
-  [11] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_subsection_heading, 3),
+  [11] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_subsection_heading, 3, .production_id = 2),
   [13] = {.entry = {.count = 1, .reusable = true}}, SHIFT(30),
   [15] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_subsection_heading_repeat1, 2),
   [17] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_subsection_heading_repeat1, 2), SHIFT_REPEAT(3),
   [20] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_subsection_heading_repeat1, 2), SHIFT_REPEAT(32),
   [23] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_subsection_heading_repeat1, 2),
   [25] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_subsection_heading_repeat1, 2), SHIFT_REPEAT(30),
-  [28] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subsection_heading, 2),
+  [28] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_subsection_heading, 2, .production_id = 2),
   [30] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
-  [32] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_subsection_heading, 2),
+  [32] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_subsection_heading, 2, .production_id = 2),
   [34] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_section_heading, 1),
   [36] = {.entry = {.count = 1, .reusable = true}}, SHIFT(31),
   [38] = {.entry = {.count = 1, .reusable = false}}, SHIFT(35),
