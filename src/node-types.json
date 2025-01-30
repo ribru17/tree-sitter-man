@@ -17,6 +17,7 @@
   {
     "type": "manual",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
