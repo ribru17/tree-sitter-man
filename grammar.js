@@ -41,7 +41,7 @@ module.exports = grammar({
     section_heading: ($) =>
       seq(
         alias(LINE_CONTENT, $.section_title),
-        repeat(choice($.block, $.subsection_heading)),
+        repeat(choice($.block, $.subsection_heading, $.option_section)),
       ),
 
     subsection_heading: ($) =>

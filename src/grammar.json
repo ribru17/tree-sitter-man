@@ -157,6 +157,10 @@
               {
                 "type": "SYMBOL",
                 "name": "subsection_heading"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "option_section"
               }
             ]
           }
